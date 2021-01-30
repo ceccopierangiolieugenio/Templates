@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  web_server:
+    build: 
+      dockerfile: server/Dockerfile
+      context: .
+    command: ./main backend:50051
+    networks:
+      - backend
+    ports:
+      - "8080:5000"
+  backend:
+    build: 
+      dockerfile: backend/Dockerfile
+      context: .
+    networks:
+      - backend
+networks:
+  backend:
