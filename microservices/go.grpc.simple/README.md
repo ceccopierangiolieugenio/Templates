@@ -2,9 +2,26 @@
 
 This template use the basic http app used in [Writing Web Applications](https://golang.org/doc/articles/wiki) and the example in [gRPC Quick Start](https://grpc.io/docs/languages/go/quickstart/#get-the-example-code).
 
-It is composed of a two docker images docker images;
-* [backend](backend), provide a [gRPC](https://grpc.io/docs/languages/go/) interface to the port 50051
-* [server](server), provide a basic callback to http://localhost:8080/webui which show the data fetched from the [backend](backend) using the [gRPC](https://grpc.io/docs/languages/go/)
+It is composed of two docker images;
+1. [backend](backend), provide a [gRPC](https://grpc.io/docs/languages/go/) interface to the port 50051
+1. [server](server), provide a basic callback to http://localhost:8080/xxxxx which show a simple echo fetched from the [backend](backend) using [gRPC](https://grpc.io/docs/languages/go/)
+
+# Build and Run with docker-compose
+### Prerequisites
+* Install [docker-compose](https://docs.docker.com/compose/install/).
+### Build and Run
+1. build and run the package
+   ```shell
+   make build
+   make run
+   ```
+1. open: http://localhost:8080/webserver
+   or: http://localhost:8080/test_webserver
+   or use curl:
+   ```shell
+   curl "0:8080/webserver"
+   curl "0:8080/test_webserver"
+   ```
 
 # Local Build and Run
 ### Prerequisites (from [gRPC Quick Start](https://grpc.io/docs/languages/go/quickstart/#prerequisites))
@@ -47,16 +64,3 @@ For installation instructions, see Protocol [Buffer Compiler Installation](https
    ```
 
 
-# Build and Run with docker-compose
-1. build and run the package
-   ```shell
-   make build
-   make run
-   ```
-1. open: http://localhost:8080/webserver
-   or: http://localhost:8080/test_webserver
-   or use curl:
-   ```shell
-   curl "0:8080/webserver"
-   curl "0:8080/test_webserver"
-   ```
