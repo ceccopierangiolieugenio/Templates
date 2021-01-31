@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  backend:
+    build: 
+      context: .
+      target: backend_image
+    networks:
+      - backend_net
+  web_server:
+    build: 
+      context: .
+      target: server_image
+    command: ./main backend:50051
+    networks:
+      - backend_net
+      - server_net
+  nginx:
+    restart: always
+    image: nginx
+    ports:
+      - "8080:80"
+    volumes:
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - server_net
+networks:
+  backend_net:
+  server_net:

@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  backend:
+    build: 
+      context: .
+      target: backend_image
+    networks:
+      - backend_net
+  web_server_test:
+    build: 
+      context: .
+      target: builder_server
+    networks:
+      - backend_net
+    depends_on:
+      - backend
+networks:
+  backend_net:

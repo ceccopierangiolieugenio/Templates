@@ -1,0 +1,6 @@
+version: "3.7"
+services:
+  backend_test:
+    build: 
+      context: .
+      target: builder_backend
