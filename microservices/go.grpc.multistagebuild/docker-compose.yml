@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  web_server:
+    build: 
+      context: .
+      target: server_image
+    command: ./main backend:50051
+    networks:
+      - backend
+    ports:
+      - "8080:5000"
+  backend:
+    build: 
+      context: .
+      target: backend_image
+    networks:
+      - backend
+networks:
+  backend:

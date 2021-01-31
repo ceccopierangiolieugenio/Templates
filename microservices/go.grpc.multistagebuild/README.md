@@ -1,13 +1,10 @@
-# Simple Web server Template with gRPC Backend, load balancing and nginx
+# Simple Web server Template with gRPC Backend
 
 This template use the basic http app from [Writing Web Applications](https://golang.org/doc/articles/wiki) and the example in [gRPC Quick Start](https://grpc.io/docs/languages/go/quickstart/#get-the-example-code).
 
-It is composed of three docker images;
-1. 3 [backend](backend) replicas, with a [gRPC](https://grpc.io/docs/languages/go/) interface to the port 50051
-1. 3 [web_server](server) replicas, with a basic callback to http://localhost:8080/xxxxx which show a simple echo fetched from the [backend](backend) using [gRPC](https://grpc.io/docs/languages/go/)
-1. A [nginx](nginx) reverse proxy to the [web_server](server)
-
-![diagram](doc/go.grpc.nginx.loadbalancer.svg)
+It is composed of two docker images;
+1. [backend](backend), provide a [gRPC](https://grpc.io/docs/languages/go/) interface to the port 50051
+1. [server](server), provide a basic callback to http://localhost:8080/xxxxx which show a simple echo fetched from the [backend](backend) using [gRPC](https://grpc.io/docs/languages/go/)
 
 # Build and Run with docker-compose
 ### Prerequisites
