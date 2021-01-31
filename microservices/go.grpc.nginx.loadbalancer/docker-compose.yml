@@ -1,0 +1,30 @@
+version: "3.7"
+services:
+  web_server:
+    build: 
+      dockerfile: server/Dockerfile
+      context: .
+    command: ./main backend:50051
+    networks:
+      - backend_net
+      - server_net
+  backend:
+    build: 
+      dockerfile: backend/Dockerfile
+      context: .
+    networks:
+      - backend_net
+  nginx:
+    restart: always
+    image: nginx
+    container_name: nginx
+    ports:
+      - "8080:80"
+    volumes:
+    - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - backend_net
+      - server_net
+networks:
+  backend_net:
+  server_net:
