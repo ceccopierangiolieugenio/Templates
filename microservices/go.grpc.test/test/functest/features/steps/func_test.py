@@ -1,17 +1,18 @@
 from behave import *
 import requests
+from pythonping import ping
 
 @given('the backend is running')
 def step_impl(context):
-    pass
+    assert ping('backend').success()
 
 @given('the frontend is running')
 def step_impl(context):
-    pass
+    assert ping('web_server').success()
 
 @given('the nginx is running')
 def step_impl(context):
-    pass
+    assert ping('nginx').success()
 
 
 @when('I request {name}')

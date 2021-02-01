@@ -48,8 +48,10 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
+	log.Println("tcp listening at:", port)
 	s := grpc.NewServer()
 	pb.RegisterGreeterServer(s, &server{})
+	log.Println("Staring gRPC...")
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
