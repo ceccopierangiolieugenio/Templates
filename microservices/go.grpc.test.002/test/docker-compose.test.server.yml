@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  pds:
+    build: 
+      context: .
+      target: builder_pds
+    environment:
+      CGO_ENABLED: 0
+    command: go test ./pds/...

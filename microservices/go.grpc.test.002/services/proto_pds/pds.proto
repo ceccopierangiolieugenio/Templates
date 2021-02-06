@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option go_package = "test.90poe/services/proto_pds";
+
+package proto_pds;
+
+/* Port definition based on "ports.json" */
+message Port{
+  string ID = 1;
+  Content Content = 2;
+}
+message Content {
+  string Name = 1;
+  string City = 2;
+  string Country = 3;
+  repeated string Alias = 4;
+  repeated string Regions = 5;
+  repeated float Coordinates = 6;
+  string Province = 7;
+  string Timezone = 8;
+  repeated string Unlocs = 9;
+  string Code = 10;
+}
+
+message ID{
+  string ID = 1;
+}
+
+message IDs{
+  repeated ID IDs = 1;
+}
+
+message Query{
+  int32 Limit  = 1; 
+  int32 Offset = 2;
+}
+
+service PDS {
+  rpc Insert(Port) returns (ID);
+  rpc Get(ID) returns (Port);
+  rpc List(Query) returns (IDs);
+}
+
+

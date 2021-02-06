@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "c1a75c2d-bbd0-4a84-93e0-2bdbbbfbada1",
+		"name": "Golang gRPC Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ping",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200)",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{url}}:{{port}}/ping",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200)",
+							"});",
+							"",
+							"",
+							"pm.test(\"Check the results\", function(){",
+							"    let expected = {",
+							"        \"ID\":\"AEJED\",",
+							"        \"Content\":{",
+							"            \"Name\":\"Jebel Dhanna\",",
+							"            \"City\":\"Jebel Dhanna\",",
+							"            \"Country\":\"United Arab Emirates\",",
+							"            \"Coordinates\":[52.612602,24.191513],",
+							"            \"Province\":\"Abu Dhabi\",",
+							"            \"Timezone\":\"Asia/Dubai\",",
+							"            \"Unlocs\":[\"AEJED\"],",
+							"            \"Code\":\"52050\"}};",
+							"    let jsonData = pm.response.json();",
+							"    pm.expect(JSON.stringify(jsonData)).to.eql(JSON.stringify(expected));",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{url}}:{{port}}/get?id=AEJED",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "AEJED"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){",
+							"    pm.response.to.have.status(200)",
+							"});",
+							"pm.test(\"Check the results\", function(){",
+							"    let expected = {",
+							"        \"IDs\": [",
+							"            {\"ID\": \"AEJED\"},",
+							"            {\"ID\": \"AEKLF\"},",
+							"            {\"ID\": \"AEPRA\"},",
+							"            {\"ID\": \"AEQIW\"},",
+							"            {\"ID\": \"AERKT\"}]};",
+							"    let jsonData = pm.response.json();",
+							"    pm.expect(JSON.stringify(jsonData)).to.eql(JSON.stringify(expected));",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{url}}:{{port}}/list?limit=5&offset=5",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"list"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "5"
+						},
+						{
+							"key": "offset",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
