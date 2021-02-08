@@ -7,5 +7,5 @@ A collection of different project templates
 | [go gRPC](microservices/go.grpc.nginx.loadbalancer) |     | [x] |     ||
 | [go gRPC](microservices/go.grpc.multistagebuild)    | [x] |     |     ||
 | [go gRPC](microservices/go.grpc.test)               | [x] | [x] | [x] ||
-| [go web/gRPC](microservices/go.grpc.test.002)       | [x] | [x] | [x] ||
+| [go web/gRPC](microservices/go.web.grpc.test.002)   | [x] | [x] | [x] ||
 | [go web](microservices/go.grpc.web)                 |     |     |     ||

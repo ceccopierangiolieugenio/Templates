@@ -19,7 +19,11 @@ services:
       SQL_HOST: "psql:5432"
       SQL_USER: "postgres"
       SQL_PASS: "SecretPassword"
-    command: sh -c "while ! nc -vz psql:5432 ; do sleep 1 ; done; ./main"
+    command: |
+      sh -c  "while ! nc -vz psql:5432 ; do 
+                sleep 1 ; 
+              done; 
+              ./main"
     networks:
       - pds_net
 
@@ -32,7 +36,11 @@ services:
       HTTP_PORT: ":5000"
     volumes:
       - ./test/ports.json:/opt/webserver/ports.json:ro
-    command: sh -c "while ! nc -vz pds:50151 ; do sleep 1 ; done; ./main -in /opt/webserver/ports.json"
+    command: |
+      sh -c  "while ! nc -vz pds:50151 ; do 
+                sleep 1 ; 
+              done;
+              ./main -in /opt/webserver/ports.json"
     networks:
       - pds_net
       - client_net
@@ -53,7 +61,11 @@ services:
       - client_net
     volumes:
       - ./test/postman:/etc/newman:ro
-    command: run Golang_gRPC-Test.postman_collection.json -e gRPC-Test.postman_environment.json
+    entrypoint: |
+      sh -c  "while ! nc -vz web_server:5000 ; do
+                sleep 1 ; 
+              done; 
+              newman run Golang_gRPC-Test.postman_collection.json -e gRPC-Test.postman_environment.json"
 
 networks:
   pds_net:

@@ -8,7 +8,7 @@ run:
 	docker-compose up --force-recreate --remove-orphans --abort-on-container-exit
 
 unit_test:
-	docker-compose -f test/docker-compose.test.backend.yml --project-directory .  up  --abort-on-container-exit --remove-orphans --build
+	docker-compose -f test/docker-compose.test.client.yml --project-directory .  up  --abort-on-container-exit --remove-orphans --build
 	docker-compose -f test/docker-compose.test.server.yml  --project-directory .  up  --abort-on-container-exit --remove-orphans --build
 
 postman_test:

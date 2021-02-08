@@ -6,4 +6,4 @@ services:
       target: builder_client
     environment:
       CGO_ENABLED: 0
-    command: go test ./client/...
+    command: go test ./client/pkg/api
