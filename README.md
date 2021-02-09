@@ -9,3 +9,4 @@ A collection of different project templates
 | [go gRPC](microservices/go.grpc.test)               | [x] | [x] | [x] ||
 | [go web/gRPC](microservices/go.web.grpc.test.002)   | [x] | [x] | [x] ||
 | [go web](microservices/go.grpc.web)                 |     |     |     ||
+| [go web](microservices/go.web.ui.test)              | [x] | [x] | [x] ||

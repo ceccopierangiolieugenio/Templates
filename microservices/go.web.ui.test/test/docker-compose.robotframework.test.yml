@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  web_server:
+    build: 
+      context: .
+      target: server_image
+    networks:
+      - server_net
+  func_test:
+    image: ppodgorsek/robot-framework:3.7.0
+    networks:
+      - server_net
+    environment:
+      BROWSER: "Firefox"
+      URL: "http://web_server:5000"
+    volumes:      
+      - ./test/robot:/opt/robotframework/tests:Z    
+networks:
+  server_net:

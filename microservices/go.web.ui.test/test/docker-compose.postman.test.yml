@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  web_server:
+    build: 
+      context: .
+      target: server_image
+    networks:
+      - server_net
+  func_test:
+    image: postman/newman:alpine
+    networks:
+      - server_net
+    volumes:
+      - ./test/postman:/etc/newman:ro
+    command: run postman_collection.json -e postman_environment.json
+networks:
+  server_net:
